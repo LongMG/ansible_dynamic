@@ -1,0 +1,17 @@
+- hosts: tag_Name_dc_stg_web_duplicate_*
+  gather_facts: yes
+  remote_user: ec2-user
+  become: yes
+
+  roles:
+    - update
+    - nginx
+
+- hosts: tag_Name_dc_stg_web_original_*
+  gather_facts: yes
+  remote_user: ec2-user
+  become: yes
+
+  roles:
+    - update
+    - nginx
