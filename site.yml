@@ -1,11 +1,17 @@
-- hosts: all
+- hosts: tag_Name_dc_stg_web_duplicate_*
   gather_facts: yes
-  remote_user: "{{ remote_user }}"
-  vars:
-    - deploy_type: normal
-    - build_type: packer
-  vars_files:
-    - group_vars/all/all.yml
-    - group_vars/{{ env }}/all.yml
+  remote_user: ec2-user
+  become: yes
+
   roles:
+    - update
+    - nginx
+
+- hosts: tag_Name_dc_stg_web_original_*
+  gather_facts: yes
+  remote_user: ec2-user
+  become: yes
+
+  roles:
+    - update
     - nginx
