@@ -1,0 +1,11 @@
+- hosts: all
+  gather_facts: yes
+  remote_user: "{{ remote_user }}"
+  vars:
+    - deploy_type: normal
+    - build_type: packer
+  vars_files:
+    - group_vars/all/all.yml
+    - group_vars/{{ env }}/all.yml
+  roles:
+    - nginx
